@@ -1,0 +1,28 @@
+<h2>Usuários</h2>
+
+<input [(ngModel)]="novoUsuario.nome" placeholder="Nome">
+<input [(ngModel)]="novoUsuario.email" placeholder="Email">
+<button (click)="salvarUsuario()">Adicionar</button>
+
+<table>
+    <thead>
+        <tr>
+            <th>
+                Nome
+            </th>
+            <th>
+                Email
+            </th>
+        </tr>
+    </thead>
+    <tbody *ngFor="let usuario for usuarios | async">
+        <tr>
+            <td>
+                {{usuario.nome}} 
+            </td>
+            <td>
+                {{usuario.email}}
+            </td>
+        </tr>
+    </tbody>
+</table>
