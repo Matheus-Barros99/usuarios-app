@@ -1,18 +1,38 @@
 <h2>Usuários</h2>
 
-<div>
-<input [(ngModel)]="novoUsuario.nome" placeholder="Nome">
-<br/> <br/>
-<input [(ngModel)]="novoUsuario.email" placeholder="Email">
-<br/> <br/>
-<button (click)="salvarUsuario()">Adicionar</button>
-</div>
+<table border="1" cellpadding="10" cellspacing="0">
+    <thead>
+        <tr>
+            <th>
+                Nome
+            </th>
+            <th>
+                Email
+            </th>
+            <th>
+                Ações
+            </th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr *ngFor="let user of usuarios">
+            <td>{{user.nome}}</td>
+            <td>{{user.email}}</td>
+            <td><button (click)="atualizarUsuario(user)">Editar</button>||
+                <button (click)="deletarUsuario(user.id)">Excluir</button></td>
+        </tr>
+    </tbody>
+</table>
 <p>
 
-    <ul>
-        <li *ngFor="let user of usuarios">
-          {{ user.nome }}||{{ user.email }}||
-          <button (click)="atualizarUsuario(user)">Editar</button>||
-          <button (click)="deletarUsuario(user.id)">Excluir</button>
-        </li>
-      </ul>
+</p>
+<h2>Cadastrar usuário</h2>
+<div>
+    <input [(ngModel)]="novoUsuario.nome" placeholder="Nome">
+    <br/> <br/>
+    <input [(ngModel)]="novoUsuario.email" placeholder="Email">
+    <br/> <br/>
+    <input [(ngModel)]="novoUsuario.senha" placeholder="Senha">
+    <br/> <br/>
+    <button (click)="salvarUsuario()">Adicionar</button>
+    </div>

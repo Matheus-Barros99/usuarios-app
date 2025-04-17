@@ -13,18 +13,18 @@ export class UsuarioService {
   constructor(private http: HttpClient) { }
 
   listarUsuarios(): Observable<User[]> {
-    return this.http.get<User[]>(`${this.api}/RecuperaUsuarios`);
+    return this.http.get<User[]>(`${this.api}/RecuperarUsuarios`);
   }
 
   criarUsuario(usuario: User): Observable<User>{
-    return this.http.post<User>(`${this.api}/SalvaUsuario`, usuario);
+    return this.http.post<User>(`${this.api}/SalvarUsuario`, usuario);
   } 
 
   atualizarUsuario(usuario: User): Observable<void>{
-    return this.http.put<void>(`${this.api}/${usuario.id}`, usuario);
+    return this.http.put<void>(`${this.api}/EditarUsuario?id=${usuario.id}`, usuario);
   }
 
   deletarUsuario(id: number): Observable<void>{
-    return this.http.delete<void>(`${this.api}/${id}`);
+    return this.http.delete<void>(`${this.api}/ExcluirUsuario?id=${id}`);
   }
 }

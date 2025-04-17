@@ -15,7 +15,8 @@ export class UsuariosComponent implements OnInit {
     id: 0,
     nome: '',
     email: '',
-    senha: ''
+    senha: '',
+    salt: ''
   };
 
   constructor(private usuarioService: UsuarioService) { }
@@ -34,7 +35,8 @@ export class UsuariosComponent implements OnInit {
         id: 0,
         nome: '',
         email: '',
-        senha: ''
+        senha: '',
+        salt: ''
       };
       this.carregarUsuarios();
     })
