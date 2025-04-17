@@ -1,5 +1,5 @@
 import { Component, inject, OnInit } from '@angular/core';
-import { Usuario } from '../../models/Usuario';
+import { User } from '../../models/User';
 import { UsuarioService } from '../../../services/usuario.service';
 import { FormsModule } from '@angular/forms';
 import { CommonModule } from '@angular/common';
@@ -8,36 +8,43 @@ import { CommonModule } from '@angular/common';
   selector: 'app-usuarios',
   imports: [CommonModule, FormsModule],
   templateUrl: './usuarios.component.html',
-  styleUrl: './usuarios.component.scss'
 })
 export class UsuariosComponent implements OnInit {
-usuarios: Usuario[] = [];
-novoUsuario: Usuario = {
-  id: 0, 
-  nome: '', 
-  email: ''};
-  
-  constructor(private usuarioService: UsuarioService){}
+  usuarios: User[] = [];
+  novoUsuario: User = {
+    id: 0,
+    nome: '',
+    email: '',
+    senha: ''
+  };
+
+  constructor(private usuarioService: UsuarioService) { }
 
   ngOnInit() {
     this.carregarUsuarios();
   }
 
-  carregarUsuarios(){
+  carregarUsuarios() {
     this.usuarioService.listarUsuarios().subscribe(data => this.usuarios = data);
   }
 
-  salvarUsuario(){
+  salvarUsuario() {
     this.usuarioService.criarUsuario(this.novoUsuario).subscribe(() => {
       this.novoUsuario = {
-        id: 0, 
-        nome: '', 
-        email: ''};
-        this.carregarUsuarios();
+        id: 0,
+        nome: '',
+        email: '',
+        senha: ''
+      };
+      this.carregarUsuarios();
     })
   }
 
-  deletarUsuario(id: number){
+  atualizarUsuario(usuario: User){
+    this.usuarioService.atualizarUsuario(usuario).subscribe(() => this.carregarUsuarios);
+  }
+
+  deletarUsuario(id: number) {
     this.usuarioService.deletarUsuario(id).subscribe(() => this.carregarUsuarios);
   }
 }

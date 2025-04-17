@@ -1,6 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { Usuario } from '../app/models/Usuario';
+import { User } from '../app/models/User';
 import { Observable } from 'rxjs';
 import { FormsModule } from '@angular/forms';
 
@@ -12,15 +12,15 @@ export class UsuarioService {
 
   constructor(private http: HttpClient) { }
 
-  listarUsuarios(): Observable<Usuario[]> {
-    return this.http.get<Usuario[]>(this.api);
+  listarUsuarios(): Observable<User[]> {
+    return this.http.get<User[]>(`${this.api}/RecuperaUsuarios`);
   }
 
-  criarUsuario(usuario: Usuario): Observable<Usuario>{
-    return this.http.post<Usuario>(this.api, usuario);
+  criarUsuario(usuario: User): Observable<User>{
+    return this.http.post<User>(`${this.api}/SalvaUsuario`, usuario);
   } 
 
-  atualizarUsuario(usuario: Usuario): Observable<void>{
+  atualizarUsuario(usuario: User): Observable<void>{
     return this.http.put<void>(`${this.api}/${usuario.id}`, usuario);
   }
 

@@ -1,28 +1,18 @@
 <h2>Usuários</h2>
 
+<div>
 <input [(ngModel)]="novoUsuario.nome" placeholder="Nome">
+<br/> <br/>
 <input [(ngModel)]="novoUsuario.email" placeholder="Email">
+<br/> <br/>
 <button (click)="salvarUsuario()">Adicionar</button>
+</div>
+<p>
 
-<table>
-    <thead>
-        <tr>
-            <th>
-                Nome
-            </th>
-            <th>
-                Email
-            </th>
-        </tr>
-    </thead>
-    <tbody *ngFor="let usuario for usuarios | async">
-        <tr>
-            <td>
-                {{usuario.nome}} 
-            </td>
-            <td>
-                {{usuario.email}}
-            </td>
-        </tr>
-    </tbody>
-</table>
+    <ul>
+        <li *ngFor="let user of usuarios">
+          {{ user.nome }}||{{ user.email }}||
+          <button (click)="atualizarUsuario(user)">Editar</button>||
+          <button (click)="deletarUsuario(user.id)">Excluir</button>
+        </li>
+      </ul>
