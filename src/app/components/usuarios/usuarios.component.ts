@@ -8,6 +8,7 @@ import { CommonModule } from '@angular/common';
   selector: 'app-usuarios',
   imports: [CommonModule, FormsModule],
   templateUrl: './usuarios.component.html',
+  standalone: true
 })
 export class UsuariosComponent implements OnInit {
   usuarios: User[] = [];
