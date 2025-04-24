@@ -1,36 +1,42 @@
-<h2>Usuários</h2>
-
 <div class="tabela-container">
-    <table class="tabela-usuarios">
-      <thead>
-        <tr>
-          <th>Nome</th>
-          <th>Email</th>
-          <th>Ações</th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr *ngFor="let user of usuarios">
-          <td>{{ user.nome }}</td>
-          <td>{{ user.email }}</td>
-          <td>
-            <button class="btn editar" (click)="atualizarUsuario(user)">Editar</button>
-            <button class="btn excluir" (click)="deletarUsuario(user.id)">Excluir</button>
-          </td>
-        </tr>
-      </tbody>
-    </table>
-  </div>
-<p>
+  <h2>Lista de Usuários</h2>
 
-</p>
-<h2>Cadastrar usuário</h2>
-<div>
-    <input [(ngModel)]="novoUsuario.nome" placeholder="Nome">
-    <br/> <br/>
-    <input [(ngModel)]="novoUsuario.email" placeholder="Email">
-    <br/> <br/>
-    <input [(ngModel)]="novoUsuario.senha" placeholder="Senha">
-    <br/> <br/>
-    <button (click)="salvarUsuario()">Adicionar</button>
-    </div>
+  <input
+    type="text"
+    placeholder="Buscar por nome ou email..."
+    [(ngModel)]="filtro"
+    class="input-busca"
+    width="100"
+  />
+
+  <button class="adicionar" (click)="cadastrarUsuario()">+ Adicionar</button>
+
+  <table class="tabela-usuarios">
+    <thead>
+      <tr>
+        <th>Nome</th>
+        <th>Email</th>
+        <th>Ações</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr
+        *ngFor="let user of usuariosFiltrados | slice: paginaAtual * itensPorPagina : (paginaAtual + 1) * itensPorPagina"
+      >
+        <td>{{ user.nome }}</td>
+        <td>{{ user.email }}</td>
+        <td>
+          <button class="editar" (click)="atualizarUsuario(user)">✏️</button>
+          <button class="excluir" (click)="confirmarExclusao(user.id)">🗑️</button>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+
+  <div class="paginacao" *ngIf="totalPaginas > 1">
+    <button (click)="paginaAnterior()" [disabled]="paginaAtual === 0">◀️</button>
+    <span>Página {{ paginaAtual + 1 }} de {{ totalPaginas }}</span>
+    <button (click)="proximaPagina()" [disabled]="paginaAtual >= totalPaginas - 1">▶️</button>
+  </div>
+</div>
+

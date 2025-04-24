@@ -1,54 +1,92 @@
 .tabela-container {
-    max-width: 800px;
-    margin: 40px auto;
-    padding: 20px;
-    background: #fff;
-    border-radius: 10px;
-    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
-    overflow-x: auto;
+  max-width: 800px;
+  margin: auto;
+  padding: 1rem;
+  background: #f9f9f9;
+  border-radius: 8px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+
+  h2 {
+    text-align: center;
+    margin-bottom: 1rem;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
   }
-  
+
+  .input-busca {
+    width: 300px; // Define um tamanho menor
+    float: right; // Alinha à direita
+    padding: 0.5rem;
+    margin-bottom: 1rem;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+  }
+
   .tabela-usuarios {
     width: 100%;
     border-collapse: collapse;
-    font-family: Arial, sans-serif;
-    text-align: left;
+    font-family: 'Segoe UI', sans-serif;
+
+    th,
+    td {
+      text-align: left;
+      padding: 12px;
+      border-bottom: 1px solid #ddd;
+    }
+
+    th {
+      background-color: #007BFF;
+      color: white;
+    }
+
+    tr:hover {
+      background-color: #f1f1f1;
+    }
+
+    button {
+      padding: 0.3rem 0.6rem;
+      margin: 0 0.2rem;
+      border: none;
+      border-radius: 4px;
+      cursor: pointer;
+      font-size: 1rem;
+
+      &.adicionar{
+        background-color: #008805;
+        color: white;
+        float: left;
+      }
+
+      &.editar {
+        background-color: #b89425;
+        color: white;
+      }
+
+      &.excluir {
+        background-color: #9e222f;
+        color: white;
+      }
+    }
   }
-  
-  .tabela-usuarios thead {
-    background-color: #f5f5f5;
+
+  .paginacao {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 1rem;
+    margin-top: 1rem;
+
+    button {
+      padding: 0.3rem 0.6rem;
+      border: none;
+      border-radius: 4px;
+      background-color: #1266c0;
+      color: white;
+      cursor: pointer;
+
+      &:disabled {
+        background-color: #cccccc;
+        cursor: not-allowed;
+      }
+    }
   }
-  
-  .tabela-usuarios th,
-  .tabela-usuarios td {
-    padding: 12px 16px;
-    border-bottom: 1px solid #e0e0e0;
-  }
-  
-  .tabela-usuarios tbody tr:hover {
-    background-color: #f9f9f9;
-  }
-  
-  .btn {
-    padding: 6px 12px;
-    margin-right: 5px;
-    font-size: 0.9rem;
-    border: none;
-    border-radius: 4px;
-    cursor: pointer;
-  }
-  
-  .btn.editar {
-    background-color: #1976d2;
-    color: white;
-  }
-  
-  .btn.excluir {
-    background-color: #d32f2f;
-    color: white;
-  }
-  
-  .btn:hover {
-    opacity: 0.9;
-  }
-  
+}
