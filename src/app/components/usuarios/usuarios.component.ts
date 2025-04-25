@@ -29,8 +29,8 @@ export class UsuariosComponent implements OnInit {
     this.usuarioService.listarUsuarios().subscribe(data => this.usuarios = data);
   }
 
-  atualizarUsuario(usuario: User) {
-    this.usuarioService.atualizarUsuario(usuario).subscribe(() => this.carregarUsuarios);
+  atualizarUsuario(idUsuario: number) {
+    this.router.navigate(['/editar', idUsuario]);
   }
 
   deletarUsuario(id: number) {
@@ -67,6 +67,7 @@ export class UsuariosComponent implements OnInit {
   confirmarExclusao(id: number) {
     if (confirm('Tem certeza que deseja excluir este usuário?')) {
       this.deletarUsuario(id);
+      this.router.navigate(['/usuarios']);
     }
   }
 }

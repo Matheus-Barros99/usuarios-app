@@ -16,6 +16,10 @@ export class UsuarioService {
     return this.http.get<User[]>(`${this.api}/RecuperarUsuarios`);
   }
 
+  recuperarUsuarioPorId(idUsuario: number): Observable<User>{
+    return this.http.get<User>(`${this.api}/RecuperarUsuarioPorId?idUsuario=${idUsuario}`,);
+  }
+
   criarUsuario(usuario: User): Observable<User>{
     return this.http.post<User>(`${this.api}/SalvarUsuario`, usuario);
   } 
