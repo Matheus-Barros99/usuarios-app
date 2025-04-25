@@ -9,10 +9,10 @@
     width="100"
   />
 
-  <button class="adicionar" (click)="cadastrarUsuario()">+ Adicionar</button>
+  <button class="adicionar" (click)="cadastrarUsuario()"><i class="fas fa-plus"></i> adicionar</button>
 
   <table class="tabela-usuarios">
-    <thead>
+    <thead >
       <tr>
         <th>Nome</th>
         <th>Email</th>
@@ -26,8 +26,8 @@
         <td>{{ user.nome }}</td>
         <td>{{ user.email }}</td>
         <td>
-          <button class="editar" (click)="atualizarUsuario(user)">✏️</button>
-          <button class="excluir" (click)="confirmarExclusao(user.id)">🗑️</button>
+          <button class="editar" (click)="atualizarUsuario(user.id)"><i class="fas fa-edit"></i></button>
+          <button class="excluir" (click)="confirmarExclusao(user.id)"><i class="fas fa-trash"></i></button>
         </td>
       </tr>
     </tbody>
