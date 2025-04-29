@@ -3,6 +3,7 @@ import { Injectable } from '@angular/core';
 import { User } from '../app/models/User';
 import { Observable } from 'rxjs';
 import { FormsModule } from '@angular/forms';
+import { AlterarSenhaDTO } from '../app/models/DTO/AlterarSenhaDTO';
 
 @Injectable({
   providedIn: 'root'
@@ -26,6 +27,10 @@ export class UsuarioService {
 
   atualizarUsuario(usuario: User): Observable<void>{
     return this.http.put<void>(`${this.api}/EditarUsuario?id=${usuario.id}`, usuario);
+  }
+
+  alterarSenha(dados: AlterarSenhaDTO): Observable<void>{
+    return this.http.put<void>(`${this.api}/AlterarSenha`, dados);
   }
 
   deletarUsuario(id: number): Observable<void>{

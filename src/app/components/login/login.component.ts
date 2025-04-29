@@ -26,4 +26,8 @@ export class LoginComponent {
       error: () => this.erro = 'Email ou senha inválidos.'
     });
   }
+
+  alterarSenha(){
+    this.router.navigate(['/alterar-senha']);
+  }
 }
